@@ -1,0 +1,221 @@
+:root {
+    --fondo-menu-claro : rgb(124, 19, 199);
+    --color-letras-menu : white;
+    --hover-menu-1 : #fcfcfc55;
+    --hover-menu-2 : rgb(79, 42, 122);
+    --fondo-menu-oscuro : rgb(245, 85, 234);
+}
+
+* {
+    box-sizing: content-box ;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.bgcontainer {
+    background-color: white;
+    background-size: cover;
+}
+
+.container-fluid {
+    padding: 0% !important;
+    overflow: hidden;
+}
+
+@media (min-width: 100px) {
+    .alto100 {
+        height: 100vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .ajusteSm {
+        width: 100px !important;
+    }
+}
+
+@media (max-width: 1500px) {
+    .size {
+        width: 250px;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    flex: 0 0 auto;
+    height: 45px;
+    background-color: #cecece;
+    padding: .5rem;
+}
+
+header .switch {
+    border-radius: 50px;
+    width: 2.5rem;
+    padding: .25rem;
+    background-color: var(--fondo-menu-claro); /*Fondo botón modo oscuro*/
+    transition: background-color .2s;
+    cursor: pointer;
+}
+
+header .btn-toggle {
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    background-color: white;
+    transition: transform .1s;
+}
+
+/* Main */
+main {
+    position: relative;
+    transition: background-color .2s;
+}
+
+.tituloBienvenida {
+    color: var(--fondo-menu-claro);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bolder;
+}
+
+.subtitulo {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.card {
+    border: 1px solid var(--fondo-menu-claro) !important;
+}
+
+.titulo {
+    color: var(--fondo-menu-claro);
+    text-align: center;
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+.card-title {
+    color: var(--fondo-menu-claro);
+    text-align: center;
+}
+
+.enlacesCards {
+    text-decoration: none !important;
+}
+
+/*Footer*/
+footer {
+    margin-top: 72px;
+    background-color: #cecece
+}
+
+.enlace {
+    text-align: center;
+    text-decoration: none;
+    font-size: x-large !important;
+    font-family: 'Antonio', sans-serif !important;
+    color: rgb(166, 13, 193);
+}
+
+.enlace:hover {
+    font-weight: bold;
+    color: rgb(166, 13, 193);
+}
+
+#autor {
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
+}
+
+/*Imágenes*/
+#imagenPrincipalUsuarios {
+    width: 300px !important;
+}
+
+#iconoPerfil {
+    width: 120px;
+}
+
+#iconoCrearIncidencia {
+    width: 200px;
+}
+
+#iconoBorrarIncidencia {
+    width: 100px;
+}
+
+#iconoIncidenciasAbiertas {
+    width: 120px;
+}
+
+#iconoIncidenciasCerradas {
+    width: 140px;
+}
+
+#logoDev {
+    width: 150px;
+}
+
+/* Dark Theme */
+.dark-theme {
+    background-color: rgb(29, 29, 45); /*Fondo web modo oscuro*/
+}
+
+.dark-theme .bgcontainer {
+    background-color: rgb(39, 41, 61);
+}
+
+.dark-theme header {
+    background-color: #e9e9ea15; /*Fondo cabecera*/
+}
+
+.dark-theme .switch {
+    background-color: var(--fondo-menu-oscuro); /*Fondo boton modo claro*/
+}
+
+.dark-theme .btn-toggle {
+    transform: translateX(17px);
+}
+
+.dark-theme .card {
+    background-color: rgb(39, 41, 61);
+    border-color: var(--fondo-menu-oscuro) !important;
+}
+
+.dark-theme footer {
+    background-color: #e9e9ea15; /*Fondo footer*/
+}
+
+.dark-theme .titulo {
+    color: white !important;
+}
+
+.dark-theme .tituloBienvenida {
+    color: var(--fondo-menu-oscuro) !important;
+}
+
+.dark-theme .subtitulo {
+    color: #cecece !important;
+}
+
+.dark-theme .enlace {
+    color: var(--fondo-menu-oscuro) !important;
+}
+
+.dark-theme #autor {
+    color: white;
+}

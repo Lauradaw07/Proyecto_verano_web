@@ -1,0 +1,59 @@
+.bgcontainer {
+    background-image: url("../Assets/Images/fondoLogin.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (min-width: 992px) {
+    .alto100 {
+        height: 100vh;
+    }
+}
+
+.titulo {
+    color: white;
+    font-size: xx-large;
+    font-family: 'Oswald', sans-serif;
+    border: 1px solid white;
+    text-align: center;
+    height: 200px;
+    background-color: rgba(189, 194, 198, 0.426);
+}
+
+.card {
+    border-radius: 4% !important;
+}
+
+.card-title {
+    color: rgb(210, 13, 223);
+}
+
+.card-link {
+    text-decoration: none;
+    color: rgb(210, 13, 223);
+    font-size: large;
+}
+
+.card-link:hover {
+    font-weight: bold;
+    color: rgb(210, 13, 223);
+}
+
+.btn {
+    background-color: rgb(170, 83, 237) !important;
+    border-color: rgb(112, 40, 167) !important;
+}
+
+input {
+    border-color: rgb(170, 83, 237) !important;
+    outline: none !important;
+}
+
+.mostrar {
+    display: block !important;
+    margin-top: 25px !important;
+}
+
+.ocultar {
+    display: none !important;
+}

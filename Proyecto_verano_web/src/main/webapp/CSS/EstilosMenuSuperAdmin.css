@@ -1,0 +1,253 @@
+:root {
+    --fondo-menu-claro : rgb(124, 19, 199);
+    --color-letras-menu : white;
+    --hover-menu-1 : #fcfcfc55;
+    --hover-menu-2 : rgb(79, 42, 122);
+    --fondo-menu-oscuro : rgb(245, 85, 234);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.bgcontainer {
+    background-color: white;
+    background-size: cover;
+}
+
+.container-fluid {
+    overflow: hidden;
+    padding: 0% !important;
+}
+
+.contenedor {
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    .alto100 {
+        height: 100vh;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    flex: 0 0 auto;
+    height: 45px;
+    background-color: #cecece;
+    padding: .5rem;
+}
+
+header .switch {
+    border-radius: 50px;
+    width: 2.5rem;
+    padding: .25rem;
+    background-color: var(--fondo-menu-claro); /*Fondo botón modo oscuro*/
+    transition: background-color .2s;
+    cursor: pointer;
+}
+
+header .btn-toggle {
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    background-color: white;
+    transition: transform .1s;
+}
+
+/* Main */
+main {
+    position: relative;
+    transition: background-color .2s;
+}
+
+.toggle-menu {
+    border-radius: .5rem;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    user-select: none;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.toggle-menu.active {
+    left: calc(200px + .5rem);
+    transform: rotate(45deg);
+}
+
+.toggle-menu.active path:nth-of-type(1) {
+    stroke-dashoffset: -98px;
+}
+
+.toggle-menu.active path:nth-of-type(3) {
+    stroke-dashoffset: -138px;
+}
+
+.toggle-menu path {
+    fill: none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: rgb(73, 10, 117); /*Color icono menu hamburguesa*/
+    stroke-width: 5.5;
+    stroke-linecap: round;
+}
+
+.toggle-menu path:nth-of-type(1) {
+    stroke-dasharray: 40 139;
+}
+
+.toggle-menu path:nth-of-type(3) {
+    stroke-dasharray: 40 180;
+}
+
+/* Aside */
+aside {
+    flex: 0;
+    background-color: var(--fondo-menu-claro); /*Fondo menú 2*/
+    transform: translateX(-200px);
+    transition: transform .2s;
+}
+
+aside.active {
+    flex: 0 0 200px;
+    transform: translateX(0);
+}
+
+aside .menu {
+    padding: .25rem 0;
+    user-select: none;
+}
+
+aside .menu > li {
+    padding: .25rem .5rem;
+}
+
+aside .menu .main-menu {
+    padding: .75rem .5rem;
+    border-radius: .25rem;
+    color: var(--color-letras-menu);
+    transition: background-color .2s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+aside .menu .main-menu:hover {
+    background-color: var(--hover-menu-1);
+}
+
+aside .menu .main-menu .arrow {
+    transition: transform .2s;
+}
+
+aside .menu .main-menu.active {
+    background-color: var(--hover-menu-1);
+}
+
+aside .menu .main-menu.active .arrow {
+    transform: rotate(90deg);
+}
+
+aside .menu .main-menu div svg {
+    fill: darkslateblue;
+    margin-right: .5rem;
+}
+
+aside .menu .main-menu .arrow {
+    fill: var(--color-letras-menu);
+}
+
+aside .menu .sub-menu {
+    display: none;
+    transition: .2s;
+}
+
+aside .menu .sub-menu.active {
+    margin: .25rem auto .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+aside .menu .sub-menu.active a {
+    display: flex;
+    padding: .5rem;
+    border-radius: .25rem;
+    margin-bottom: .25rem;
+    color: slategray; /*Color letras desactivadas*/
+    transition: background-color .2s;
+    text-decoration: none;
+}
+
+aside .menu .sub-menu.active a:hover {
+    background-color: var(--hover-menu-2);
+    color: white;
+}
+
+/* Dark Theme */
+.dark-theme {
+    background-color: #333; /*Fondo web modo oscuro*/
+}
+
+.dark-theme .bgcontainer {
+    background-color: rgb(68, 74, 78);
+}
+
+.dark-theme header {
+    background-color: #28272f; /*Fondo cabecera*/
+}
+
+.dark-theme .switch {
+    background-color: var(--fondo-menu-oscuro); /*Fondo boton modo claro*/
+}
+
+.dark-theme .btn-toggle {
+    transform: translateX(17px);
+}
+
+.dark-theme .toggle-menu path {
+    stroke: var(--color-letras-menu); /*Color icono menú hamburguesa*/
+}
+
+.dark-theme aside {
+    background-color: var(--fondo-menu-oscuro);
+}
+
+.dark-theme aside .menu .main-menu {
+    color: var(--color-letras-menu);
+}
+
+.dark-theme aside .menu .main-menu:hover, .dark-theme aside .menu .main-menu.active {
+    background-color: var(--hover-menu-1);
+}
+
+.dark-theme aside .sub-menu a {
+    color: var(--color-letras-menu) !important;
+}
+
+.dark-theme .card {
+    border-color: rgba(167, 17, 17, 0.1);
+}
+
+.dark-theme aside .menu .sub-menu.active a:hover {
+    background-color: rgb(195, 49, 154);
+}
