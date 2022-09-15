@@ -253,27 +253,31 @@
                 <!--2ª fila - Card 2-->
                 <div class="col-10 col-lg-3 col-md-10">
 
-                    <div class="card p-3 mt-5">
+                    <a href="../Pages/consultarIncidenciasCerradas.jsp" class="enlacesCards">
 
-                        <div class="card-body">
+                        <div class="card p-3 mt-5">
 
-                            <div class="row justify-content-center">
+                            <div class="card-body">
 
-                                <!--Imagen Consultar Incidencias Cerradas-->
-                                <img id="iconoIncidenciasCerradas" class="mb-1" src="../Assets/Icons/iconoIncidenciasCerradas.png" alt="Imagen no disponible">
+                                <div class="row justify-content-center">
 
-                            </div>
+                                    <!--Imagen Consultar Incidencias Cerradas-->
+                                    <img id="iconoIncidenciasCerradas" class="mb-1" src="../Assets/Icons/iconoIncidenciasCerradas.png" alt="Imagen no disponible">
 
-                            <div class="row">
+                                </div>
 
-                                <!--Título Consultar Incidencias Cerradas-->
-                                <h4 class="titulo mt-5">Consultar incidencias cerradas</h4>
+                                <div class="row">
+
+                                    <!--Título Consultar Incidencias Cerradas-->
+                                    <h4 class="titulo mt-5">Consultar incidencias cerradas</h4>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </div>
+                    </a>
 
                 </div>
 

@@ -90,9 +90,14 @@ public class GestionApp {
 
     //-----------------------------MÉTODOS INCIDENCIAS-----------------------------
 
-    //Obtener incidencias sin resolver
+    //Obtener incidencias sin resolver (usuario)
     public static ArrayList<Incidencia> obtenerIncidenciasSinResolver(int idUsuario) {
         return daoIncidenciaSQL.readALLPorIdUsuarioYAbiertas(idUsuario, dao);
+    }
+
+    //Obtener Incidencias resueltas (usuario)
+    public static ArrayList<Incidencia> obtenerIncidenciasResueltas(int idUsuario) {
+        return daoIncidenciaSQL.readALLPorIdUsuarioYResueltas(idUsuario, dao);
     }
 
     //Borrar incidencia

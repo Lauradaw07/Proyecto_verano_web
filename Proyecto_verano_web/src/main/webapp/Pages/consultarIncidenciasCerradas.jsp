@@ -5,7 +5,7 @@
   Created by IntelliJ IDEA.
   User: Akame
   Date: 15/09/2022
-  Time: 19:28
+  Time: 20:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <!--JS Sweet Alert-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Consultar Incidencias Abbiertas</title>
+    <title>Consultar Incidencias Cerradas</title>
 </head>
 <body>
 <div class="bgcontainer">
@@ -54,10 +54,10 @@
                             <div class="row">
 
                                 <!--Título-->
-                                <h1 class="card-title">Consulta de Incidencias abiertas</h1>
+                                <h1 class="card-title">Consulta de Incidencias cerradas</h1>
 
                                 <!--Subtítulo-->
-                                <h4 class="card-subtitle text-muted mt-3">Estas son todas sus incidencias sin resolver</h4>
+                                <h4 class="card-subtitle text-muted mt-3">Estas son todas sus incidencias resueltas</h4>
 
                             </div>
 
@@ -83,15 +83,15 @@
 
                                                 if (usuarioLogeado != null) {
 
-                                                    ArrayList<Incidencia> incidenciasSinResolver = GestionApp.obtenerIncidenciasSinResolver(usuarioLogeado.getId());
+                                                    ArrayList<Incidencia> incidenciasResueltas = GestionApp.obtenerIncidenciasResueltas(usuarioLogeado.getId());
 
-                                                    if (!incidenciasSinResolver.isEmpty()) {%>
+                                                    if (!incidenciasResueltas.isEmpty()) {%>
 
                                                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
                                                             <div class="carousel-inner">
 
-                                                                <%for (int i = 0; i < incidenciasSinResolver.size(); i++) {
+                                                                <%for (int i = 0; i < incidenciasResueltas.size(); i++) {
 
                                                                     if (i == 0) {%>
 
@@ -105,13 +105,25 @@
 
                                                                                         <h1 class="fechaInicioIncidencia">
 
-                                                                                            <%=incidenciasSinResolver.get(i).getFechaInicio()%>
+                                                                                            <%=incidenciasResueltas.get(i).getFechaInicio()%>
 
                                                                                         </h1>
 
                                                                                         <h4>
 
-                                                                                            <%=incidenciasSinResolver.get(i).getDescripcion()%>
+                                                                                            <%=incidenciasResueltas.get(i).getDescripcion()%>
+
+                                                                                        </h4>
+
+                                                                                        <hr>
+
+                                                                                        <h4>
+
+                                                                                            Solución:
+
+                                                                                            <br>
+
+                                                                                            <%=incidenciasResueltas.get(i).getSolucion()%>
 
                                                                                         </h4>
 
@@ -135,13 +147,25 @@
 
                                                                                     <h1 class="fechaInicioIncidencia">
 
-                                                                                        <%=incidenciasSinResolver.get(i).getFechaInicio()%>
+                                                                                        <%=incidenciasResueltas.get(i).getFechaInicio()%>
 
                                                                                     </h1>
 
                                                                                     <h4>
 
-                                                                                        <%=incidenciasSinResolver.get(i).getDescripcion()%>
+                                                                                        <%=incidenciasResueltas.get(i).getDescripcion()%>
+
+                                                                                    </h4>
+
+                                                                                    <hr>
+
+                                                                                    <h4 id="solucion">
+
+                                                                                        Solución:
+
+                                                                                        <br>
+
+                                                                                        <%=incidenciasResueltas.get(i).getSolucion()%>
 
                                                                                     </h4>
 
@@ -183,7 +207,7 @@
 
                                                                 <div class="card-body">
 
-                                                                    <h1 id="errorIncidenciasRegistradas">No existen incidencias sin resolver</h1>
+                                                                    <h1 id="errorIncidenciasRegistradas">No existen incidencias resueltas</h1>
 
                                                                 </div>
 

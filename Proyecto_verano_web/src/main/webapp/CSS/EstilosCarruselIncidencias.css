@@ -56,3 +56,12 @@ input {
     filter: invert(108%);
 }
 
+#errorIncidenciasRegistradas {
+    color: red !important;
+    font-size: x-large !important;
+}
+
+#solucion {
+    color: rgb(114, 113, 116) !important;
+}
+
