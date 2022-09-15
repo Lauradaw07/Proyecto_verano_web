@@ -47,7 +47,7 @@ input {
     display: none !important;
 }
 
-#fechaInicioIncidencia {
+.fechaInicioIncidencia {
     color: rgba(154, 24, 163, 0.719) !important;
     font-size: x-large !important;
 }

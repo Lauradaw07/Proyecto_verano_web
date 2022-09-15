@@ -91,9 +91,57 @@
                                                                 ArrayList<Incidencia> incidenciasSinResolver = GestionApp.obtenerIncidenciasSinResolver(usuarioLogeado.getId());
 
                                                                 if (!incidenciasSinResolver.isEmpty()) {
-                                                                    for (Incidencia incidencia: incidenciasSinResolver) {%>
+                                                                    for (int i = 0; i < incidenciasSinResolver.size(); i++) {
+                                                                        if (i == 0) {%>
+                                                                            <div class="carousel-item active">
 
-                                                                        <div class="carousel-item active">
+                                                                                <form method="post" action="${pageContext.request.contextPath}/BorrarIncidencia">
+
+                                                                                    <div class="card p-5 mt-5 mb-4">
+
+                                                                                        <div class="card-body">
+
+                                                                                            <div class="row">
+
+                                                                                                <h1 class="fechaInicioIncidencia">
+
+                                                                                                    <%=incidenciasSinResolver.get(i).getFechaInicio()%>
+
+                                                                                                </h1>
+
+                                                                                                <h4>
+
+                                                                                                    <%=incidenciasSinResolver.get(i).getDescripcion()%>
+
+                                                                                                </h4>
+
+                                                                                            </div>
+
+                                                                                            <div class="row">
+
+                                                                                                <div class="col-12 col-lg-12 d-flex justify-content-evenly align-items-center izquierda mt-3">
+
+                                                                                                    <div class="row">
+
+                                                                                                        <button type="submit" id="botonBorrar" class="btn btn-primary btn-lg mt-3">Borrar</button>
+                                                                                                        <input type="hidden" name="idIncidencia" value="<%=incidenciasSinResolver.get(i).getId()%>">
+
+                                                                                                    </div>
+
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                </form>
+
+                                                                            </div>
+                                                                        <%}%>
+
+                                                                        <div class="carousel-item">
 
                                                                             <form method="post" action="${pageContext.request.contextPath}/BorrarIncidencia">
 
@@ -103,15 +151,15 @@
 
                                                                                         <div class="row">
 
-                                                                                            <h1 id="fechaInicioIncidencia">
+                                                                                            <h1 class="fechaInicioIncidencia">
 
-                                                                                                <%=incidencia.getFechaInicio()%>
+                                                                                                <%=incidenciasSinResolver.get(i).getFechaInicio()%>
 
                                                                                             </h1>
 
                                                                                             <h4>
 
-                                                                                                <%=incidencia.getDescripcion()%>
+                                                                                                <%=incidenciasSinResolver.get(i).getDescripcion()%>
 
                                                                                             </h4>
 
@@ -123,8 +171,8 @@
 
                                                                                                 <div class="row">
 
-                                                                                                    <button type="submit" id="botonBorrar" class="btn btn-primary btn-lg mt-3">Borrar</button>
-                                                                                                    <input type="hidden" name="idIncidencia" value="<%=incidencia.getId()%>">
+                                                                                                    <button type="submit" id="botonBorrar2" class="btn btn-primary btn-lg mt-3">Borrar</button>
+                                                                                                    <input type="hidden" name="idIncidencia" value="<%=incidenciasSinResolver.get(i).getId()%>">
 
                                                                                                 </div>
 
@@ -159,8 +207,6 @@
 
                                                                 <%}
                                                             }%>
-
-
 
                                                     </div>
 
