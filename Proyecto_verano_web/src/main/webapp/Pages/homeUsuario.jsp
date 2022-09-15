@@ -218,29 +218,35 @@
                 <!--2ª fila - Card 1-->
                 <div class="col-10 col-lg-3 col-md-10">
 
-                    <!--Card Consultar Incidencias Abiertas-->
-                    <div class="card p-3 mt-5">
+                    <a href="../Pages/consultarIncidenciasAbiertas.jsp" class="enlacesCards">
 
-                        <div class="card-body">
+                        <!--Card Consultar Incidencias Abiertas-->
+                        <div class="card p-3 mt-5">
 
-                            <div class="row justify-content-center">
+                            <div class="card-body">
 
-                                <!--Imagen Consultar Incidencias abiertas-->
-                                <img id="iconoIncidenciasAbiertas" class="ajusteSm" src="../Assets/Icons/iconoIncidenciasAbiertas.png" alt="Imagen no
+                                <div class="row justify-content-center">
+
+                                    <!--Imagen Consultar Incidencias abiertas-->
+                                    <img id="iconoIncidenciasAbiertas" class="ajusteSm" src="../Assets/Icons/iconoIncidenciasAbiertas.png" alt="Imagen no
                                     disponible">
 
-                            </div>
+                                </div>
 
-                            <div class="row">
+                                <div class="row">
 
-                                <!--Título Consultar Incidencias Abiertas-->
-                                <h4 class="titulo mt-5">Consultar incidencias abiertas</h4>
+                                    <!--Título Consultar Incidencias Abiertas-->
+                                    <h4 class="titulo mt-5">Consultar incidencias abiertas</h4>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </div>
+                    </a>
+
+
 
                 </div>
 
