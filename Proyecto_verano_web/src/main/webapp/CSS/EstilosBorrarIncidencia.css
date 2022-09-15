@@ -1,0 +1,58 @@
+.bgcontainer {
+    background-image: url("../Assets/Images/fondoLogin.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (min-width: 992px) {
+    .alto100 {
+        height: 100vh;
+    }
+}
+
+.card {
+    border-radius: 2% !important;
+
+}
+
+.card-body {
+    overflow: auto;
+    max-width: 800px;
+}
+
+.card-title {
+    color: rgb(210, 13, 223);
+}
+
+.btn {
+    background-color: rgb(170, 83, 237) !important;
+    border-color: rgb(112, 40, 167) !important;
+}
+
+input {
+    border-color: rgb(170, 83, 237) !important;
+    outline: none !important;
+}
+
+.mostrar {
+    display: block !important;
+    margin-top: 25px !important;
+}
+
+.mostrar input {
+    border-color: red !important;
+}
+
+.ocultar {
+    display: none !important;
+}
+
+#fechaInicioIncidencia {
+    color: rgba(154, 24, 163, 0.719) !important;
+    font-size: x-large !important;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    filter: invert(108%);
+}
+

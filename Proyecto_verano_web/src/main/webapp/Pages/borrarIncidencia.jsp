@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="modelos.Incidencia" %>
+<%@ page import="modelos.GestionApp" %>
+<%@ page import="modelos.Usuario" %><%--
   Created by IntelliJ IDEA.
   User: Akame
   Date: 08/09/2022
@@ -13,11 +16,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Estilos CSS-->
-    <link rel="stylesheet" href="../CSS/EstilosCards.css">
+    <link rel="stylesheet" href="../CSS/EstilosBorrarIncidencia.css">
     <!--CSS Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!--JS Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <!--JS Sweet Alert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Document</title>
 </head>
 <body>
@@ -40,9 +45,9 @@
 
             <div class="row justify-content-around align-items-center">
 
-                <div class="col-12 col-lg-12">
+                <div class="col-12 col-lg-10">
 
-                    <div class="card ">
+                    <div class="card p-4">
 
                         <div class="card-body">
 
@@ -71,26 +76,91 @@
 
                                                     <div class="carousel-inner">
 
-                                                        <div class="carousel-item active">
+                                                        <%
+                                                            GestionApp gestor = null;
 
-                                                            <div class="card">
+                                                            try {
+                                                                gestor = new GestionApp();
+                                                            } catch (Exception e) {
+                                                                e.printStackTrace();
+                                                            }
+
+                                                            Usuario usuarioLogeado = (Usuario) session.getAttribute("Usuario");
+
+                                                            if (usuarioLogeado != null) {
+                                                                ArrayList<Incidencia> incidenciasSinResolver = GestionApp.obtenerIncidenciasSinResolver(usuarioLogeado.getId());
+
+                                                                if (!incidenciasSinResolver.isEmpty()) {
+                                                                    for (Incidencia incidencia: incidenciasSinResolver) {%>
+
+                                                                        <div class="carousel-item active">
+
+                                                                            <form method="post" action="${pageContext.request.contextPath}/BorrarIncidencia">
+
+                                                                                <div class="card p-5 mt-5 mb-4">
+
+                                                                                    <div class="card-body">
+
+                                                                                        <div class="row">
+
+                                                                                            <h1 id="fechaInicioIncidencia">
+
+                                                                                                <%=incidencia.getFechaInicio()%>
+
+                                                                                            </h1>
+
+                                                                                            <h4>
+
+                                                                                                <%=incidencia.getDescripcion()%>
+
+                                                                                            </h4>
+
+                                                                                        </div>
+
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-12 col-lg-12 d-flex justify-content-evenly align-items-center izquierda mt-3">
+
+                                                                                                <div class="row">
+
+                                                                                                    <button type="submit" id="botonBorrar" class="btn btn-primary btn-lg mt-3">Borrar</button>
+                                                                                                    <input type="hidden" name="idIncidencia" value="<%=incidencia.getId()%>">
+
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </form>
+
+                                                                        </div>
+
+                                                                    <%}
+                                                                } else {%>
+
+                                                                    <div class="card">
+
+                                                                        <div class="card-body">
+
+                                                                            <div class="card-title">
+
+                                                                                <h1>No existen incidencias registradas</h1>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                <%}
+                                                            }%>
 
 
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="carousel-item">
-
-                                                            <img src="..." class="d-block w-100" alt="...">
-
-                                                        </div>
-
-                                                        <div class="carousel-item">
-
-                                                            <img src="..." class="d-block w-100" alt="...">
-
-                                                        </div>
 
                                                     </div>
 
@@ -109,20 +179,6 @@
                                                         <span class="visually-hidden">Next</span>
 
                                                     </button>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row ">
-
-                                            <div class="col-12 col-lg-12 d-flex justify-content-evenly align-items-center izquierda mt-3">
-
-                                                <div class="row">
-
-                                                    <button type="reset" id="botonBorrar" class="btn btn-primary btn-lg mt-3">Borrar</button>
 
                                                 </div>
 
@@ -149,5 +205,36 @@
     </div>
 
 </div>
+<script>
+
+    <!--Sweet-alert Incidencia Borrada-->
+    <%
+        String borrada = (String) session.getAttribute("estaBorrada");
+
+        if (borrada != null && borrada.equals("true")) {
+    %>
+    Swal.fire(
+        '¡Indicencia borrada!',
+        'Registre una incidencia ante cualquier tipo de duda',
+        'success'
+    )
+    <% }
+    session.removeAttribute("estaBorrada");%>
+
+    //Sweet-alert Error crear incidencia
+    <%
+        String borrada2 = (String) session.getAttribute("estaBorrada");
+
+        if (borrada2 != null && borrada2.equals("false")) {
+    %>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se ha podido borrar la incidencia'
+    });
+    <% }
+    session.removeAttribute("estaBorrada");%>
+
+</script>
 </body>
 </html>

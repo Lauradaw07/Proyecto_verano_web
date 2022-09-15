@@ -2,6 +2,9 @@ package modelos;
 
 import DAO.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class GestionApp {
     static final DAOManager dao = DAOManager.getSinglentonInstance();;
 
@@ -29,6 +32,7 @@ public class GestionApp {
         daoIncidenciaSQL = new DAOIncidenciaSQL();
     }
 
+    //-----------------------------MÉTODOS GENERALES-----------------------------
     //LOG IN
     //Log in Usuarios
     public static Usuario logInUsuario(String correo, String clave) {
@@ -45,8 +49,9 @@ public class GestionApp {
         return daoAdminSQL.readAdminPorCorreoYClave(correo, clave, dao);
     }
 
+    //-----------------------------MÉTODOS USUARIOS-----------------------------
     //REGISTRO
-    //Registro usuarios
+    //Registrar usuario
     public static boolean registroUsuario(Usuario usuario) {
 
         return daoUsuarioSQL.insert(usuario, dao);
@@ -63,19 +68,36 @@ public class GestionApp {
         return daoUsuarioSQL.readUsuarioPorCorreoYClave(email, clave, dao);
     }
 
-    //CAMBIAR CLAVE USUARIO
+    //Cambiar clave usuario
     public static Boolean cambiarClave(Usuario usuario, String clave) {
         return daoUsuarioSQL.updateClave(clave, usuario.getId(), dao);
     }
 
-    //VALIDAR TOKEN
+    //Validar token
     public static boolean validarToken(int id) {
         return daoUsuarioSQL.updateToken(id, dao);
     }
 
-    //CREAR INCIDENCIA
+    //Crear incidencia
     public static boolean crearIncidencia(Incidencia incidencia) {
         return daoIncidenciaSQL.insert(incidencia, dao);
+    }
+
+
+    //-----------------------------MÉTODOS TÉCNICOS-----------------------------
+
+    //-----------------------------MÉTODOS ADMINS-----------------------------
+
+    //-----------------------------MÉTODOS INCIDENCIAS-----------------------------
+
+    //Obtener incidencias sin resolver
+    public static ArrayList<Incidencia> obtenerIncidenciasSinResolver(int idUsuario) {
+        return daoIncidenciaSQL.readALLPorIdUsuarioYAbiertas(idUsuario, dao);
+    }
+
+    //Borrar incidencia
+    public static boolean borrarIncidencia(int idIncidencia) {
+        return daoIncidenciaSQL.delete(idIncidencia, dao);
     }
 
 }
